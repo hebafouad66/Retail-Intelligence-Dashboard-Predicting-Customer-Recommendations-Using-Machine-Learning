@@ -484,12 +484,6 @@ elif page == "📊 EDA Dashboard":
         )
         st.plotly_chart(fig_feedback, use_container_width=True)
 
-        fig_corr = px.imshow(
-            reviews_df.select_dtypes(include="number").corr(),
-            text_auto=True,
-            title="Correlation Matrix",
-        )
-        st.plotly_chart(fig_corr, use_container_width=True)
 
 elif page == "🛠 Feature Engineering":
     st.header("Feature Engineering")

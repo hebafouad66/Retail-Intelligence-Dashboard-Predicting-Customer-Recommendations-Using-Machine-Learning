@@ -265,10 +265,18 @@ def top_review_words(df, rating_condition):
 
 reviews_df = load_reviews()
 model = None
+
 try:
     model = load_model()
-except Exception as error:
-    st.error(str(error))
+
+    from sklearn.utils.validation import check_is_fitted
+    check_is_fitted(model)
+
+    st.success("✅ Loaded model is fitted")
+
+except Exception as e:
+    st.error(f"Loaded wrong model: {e}")
+
 
 if reviews_df is not None:
     division_options = sorted(reviews_df["Division_Name"].dropna().unique())
